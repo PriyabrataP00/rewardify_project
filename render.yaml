@@ -18,5 +18,5 @@ services:
         sync: false
     region: singapore
     buildCommand: ./build.sh
-    startCommand: python manage.py runserver
+    startCommand: python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
 version: "1"
