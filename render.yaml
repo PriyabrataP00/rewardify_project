@@ -1,20 +1,20 @@
-# Exported from Render on 2024-05-21T18:42:20Z
+# Exported from Render on 2024-05-21T19:06:36Z
 services:
   - type: web
-    name: rewardify_project
+    name: rewardify_project-twn6
     runtime: python
     repo: https://github.com/PriyabrataP00/rewardify_project
     plan: free
     envVars:
-      - key: WEB_CONCURRENCY
-        sync: false
-      - key: SECRET_KEY
-        sync: false
-      - key: DATABASE_URL
+      - key: DJANGO_ALLOWED_HOSTS
         sync: false
       - key: DJANGO_SECRET_KEY
         sync: false
-      - key: DJANGO_ALLOWED_HOSTS
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
         sync: false
     region: singapore
     buildCommand: ./build.sh
