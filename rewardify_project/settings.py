@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['rewardify-project.onrender.com','13.228.225.19','18.142.128.26','54.254.162.138']
+ALLOWED_HOSTS = ['rewardify-project.onrender.com','13.228.225.19','18.142.128.26','54.254.162.138','postgres://rewardify_db_user:QZZLOQAGvzjUJIt0nlBR7fFPueEqQeon@dpg-cp6e63o21fec738gt8lg-a/rewardify_db','postgres://rewardify_db_user:QZZLOQAGvzjUJIt0nlBR7fFPueEqQeon@dpg-cp6e63o21fec738gt8lg-a.singapore-postgres.render.com/rewardify_db']
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
