@@ -2,7 +2,7 @@ databases:
   - name: rewardify_db
     plan: free
     databaseName: rewardify_db
-    user: rewardify_project
+    user: rewardify_db_user
 
 services:
   - type: web
