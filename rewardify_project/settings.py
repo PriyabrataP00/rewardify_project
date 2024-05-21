@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'False'
+DEBUG = True
 
-ALLOWED_HOSTS = ['rewardify-project.onrender.com','13.228.225.19' , '18.142.128.26', '54.254.162.138']
+ALLOWED_HOSTS = ['rewardify-project.onrender.com']
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
