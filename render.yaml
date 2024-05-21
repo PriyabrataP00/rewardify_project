@@ -18,5 +18,5 @@ services:
         sync: false
     region: singapore
     buildCommand: ./build.sh
-    startCommand: python manage.py runserver 10000
+    startCommand: python manage.py runserver
 version: "1"
