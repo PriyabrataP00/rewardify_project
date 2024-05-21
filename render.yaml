@@ -6,8 +6,6 @@ services:
     repo: https://github.com/PriyabrataP00/rewardify_project
     plan: free
     envVars:
-      - key: DJANGO_ALLOWED_HOSTS
-        sync: false
       - key: DJANGO_SECRET_KEY
         sync: false
       - key: DATABASE_URL
