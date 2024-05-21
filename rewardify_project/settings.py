@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'False'
 
-ALLOWED_HOSTS = ['rewardify-project.vercel.app','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['13.228.225.19' , '18.142.128.26', '54.254.162.138']
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
