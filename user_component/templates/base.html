@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user_home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/task_detail.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="header">
+        <h1>Hello, {{ user.username }}</h1>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'user_home' %}" class="home-button"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'user_profile' %}" class="profile-button"><i class="fas fa-user"></i> Profile</a>
+            <a href="{% url 'user_points' %}" class="points-button"><i class="fas fa-star"></i> Points</a>
+            <a href="{% url 'user_tasks' %}" class="tasks-button"><i class="fas fa-tasks"></i> Tasks</a>
+            <a href="{% url 'logout' %}" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

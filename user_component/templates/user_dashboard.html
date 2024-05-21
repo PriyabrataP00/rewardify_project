@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user_dashboard.css' %}">
+<body>
+    <header class="header">
+        <h1>Hello {{username}}</h1>
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+    </header>
+    <div class="points">
+        <h2>Facebook</h2>
+        <p>100 POINTS</p>
+        <a href="#" class="detail">View in Detail ></a>
+    </div>
+    <div class="points">
+        <h2>Task</h2>
+        <p>-</p>  <a href="#" class="detail">View in Detail ></a>
+    </div>
+    <div class="points">
+        <h2>Snapchat</h2>
+        <p>75 POINTS</p>
+        <a href="#" class="detail">View in Detail ></a>
+    </div>
+    <div class="points">
+        <h2>LinkedIn</h2>
+        <p>150 POINTS</p>
+        <a href="#" class="detail">View in Detail ></a>
+    </div>
+</body>
+</html>

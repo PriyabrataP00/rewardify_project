@@ -1,0 +1,202 @@
+@import url('common.css');
+
+.add-section, .columns-container {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em; /* Spacing between sections */
+}
+
+.add-section h2, .category-column h2, .subcategory-column h2 {
+    margin-top: 0;
+}
+
+.add-section form, .category-column ul, .subcategory-column ul {
+    margin-top: 1em;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: space-between; /* Space out columns */
+    gap: 2em; /* Add space between columns */
+}
+
+.column {
+    flex: 1;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.column h2 {
+    margin-top: 0;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+}
+
+.category-actions, .subcategory-actions {
+    display: flex;
+    align-items: center;
+}
+
+.category-actions button, .subcategory-actions button {
+    background: none;
+    border: none;
+    color: #2980b9;
+    cursor: pointer;
+    margin-right: 0.5em;
+}
+
+.edit-category-form, .edit-subcategory-form {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.edit-category-form input, .edit-subcategory-form input {
+    margin-right: 0.5em;
+}
+
+.search-container {
+    margin-bottom: 2em; /* Spacing below search bar */
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Add Category Button */
+.add-category-button {
+    background-color: #1abc9c; /* Adjusted color */
+    color: #fff;
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: none;
+    border-radius: 5px; /* Adjusted border-radius */
+    cursor: pointer;
+    width: 200px; /* Adjusted width */
+    font-weight: bold; /* Adjusted font weight */
+    margin-top: 1em; /* Adjusted margin */
+}
+
+.add-category-button:hover {
+    background-color: #16a085; /* Adjusted hover color */
+}
+
+/* Add Sub Category Button */
+.add-subcategory-button {
+    background-color: #1abc9c; /* Adjusted color */
+    color: #fff;
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: none;
+    border-radius: 5px; /* Adjusted border-radius */
+    cursor: pointer;
+    width: 200px; /* Adjusted width */
+    font-weight: bold; /* Adjusted font weight */
+    margin-top: 1em; /* Adjusted margin */
+}
+
+.add-subcategory-button:hover {
+    background-color: #16a085; /* Adjusted hover color */
+}
+
+/* Points Container */
+.points-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Add Points Button */
+.add-points-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #1abc9c; /* Adjusted color */
+    color: #fff;
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: none;
+    border-radius: 5px; /* Adjusted border-radius */
+    cursor: pointer;
+    width: 200px; /* Adjusted width */
+    font-weight: bold; /* Adjusted font weight */
+    margin-top: 1em; /* Adjusted margin */
+}
+
+.add-points-button:hover {
+    background-color: #16a085; /* Adjusted hover color */
+}
+
+/* Points Input */
+#pointsInput {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 200px; /* Same width as button */
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: 1px solid #1abc9c; /* Match button color */
+    border-radius: 5px; /* Match button border-radius */
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+
+/* Submit Button */
+.submit-button {
+    position: relative;
+    top:0;
+    left:0;
+    background-color: #e67e22; /* Adjusted color */
+    color: #fff;
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: none;
+    border-radius: 5px; /* Adjusted border-radius */
+    cursor: pointer;
+    width: 200px; /* Adjusted width */
+    font-weight: bold; /* Adjusted font weight */
+    margin-top: 1em; /* Adjusted margin */
+}
+
+.submit-button:hover {
+    background-color: #d35400; /* Adjusted hover color */
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section h2 {
+    margin-bottom: 10px;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section form button {
+    align-self: flex-start;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-section form button:hover {
+    background-color: #2980b9;
+}

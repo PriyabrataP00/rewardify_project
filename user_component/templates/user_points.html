@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Points Dashboard{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_points.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="top-section">
+        <div class="total-points">Total Points: {{ total_points }}</div>
+        <a href="{% url 'leaderboard' %}" class="leaderboard-button">Leaderboard</a>
+    </div>
+    <div class="charts-container">
+        <div class="chart">
+            <h3>Points by Category</h3>
+            <canvas id="category-points-chart" width="400" height="400"></canvas>
+        </div>
+        <div class="chart">
+            <h3>Points by SubCategory</h3>
+            <canvas id="subcategory-points-chart" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <script id="categoryLabels" type="application/json">{{ category_points|safe }}</script>
+    <script id="categoryData" type="application/json">{{ category_points|safe }}</script>
+    <script id="subCategoryLabels" type="application/json">{{ sub_category_points|safe }}</script>
+    <script id="subCategoryData" type="application/json">{{ sub_category_points|safe }}</script>
+</div>
+<script src="{% static 'js/points_dashboard.js' %}"></script>
+{% endblock %}

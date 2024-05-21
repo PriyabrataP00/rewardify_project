@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ app.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="content">
+            <div class="app-item">
+                <img src="{{ app.app_image.url }}" alt="{{ app.app_name }}" class="app-icon">
+                <div class="app-details">
+                    <h3>{{ app.app_name }}</h3>
+                    <a href="{{ app.app_link }}" target="_blank">{{ app.app_link }}</a>
+                </div>
+                <div class="app-points">
+                    <p>{{ app.points }} POINTS</p>
+                </div>
+            </div>
+            <div class="upload-section">
+                <img src="{% static 'images/upload_placeholder.jpg' %}" alt="Upload" class="upload-icon">
+                <p>Upload Screenshots to complete the Task</p>
+                <form action="{% url 'upload_screenshot' app.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="image">
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

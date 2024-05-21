@@ -1,0 +1,68 @@
+@import url('common.css');
+
+.app-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.app-icon {
+    height: 80px;
+    width: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.app-details {
+    flex-grow: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app-details h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.app-details a {
+    color: #3498db;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.app-details a:hover {
+    text-decoration: underline;
+}
+
+.app-points {
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    min-width: 120px;
+    text-align: center;
+}
+
+.screenshot-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.screenshot-image {
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+}

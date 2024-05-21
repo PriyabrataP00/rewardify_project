@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ app.name }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/installed_app_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <div class="app-item">
+            <img src="{{ app.app_image.url }}" alt="{{ app.app_name }}" class="app-icon">
+            <div class="app-details">
+                <h3>{{ app.app_name }}</h3>
+                <a href="{{ app.app_link }}" target="_blank">{{ app.app_link }}</a>
+            </div>
+            <div class="app-points">
+                <p>{{ app.points }} POINTS</p>
+            </div>
+        </div>
+        <div class="screenshot-section">
+            {% if screenshot %}
+            <img src="{{ screenshot.image.url }}" alt="Screenshot" class="screenshot-image">
+            {% else %}
+            <p>No screenshot available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

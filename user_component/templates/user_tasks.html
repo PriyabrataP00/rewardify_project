@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="content">
+            <ul class="app-list">
+                {% for app in apps %}
+                <li class="app-item">
+                    <img src="{{ app.image.url }}" alt="{{ app.name }}" class="app-icon">
+                    <div class="app-details">
+                        <h3>{{ app.name }}</h3>
+                        <a href="{% url 'task_detail' app.id %}">View in Detail ></a>
+                    </div>
+                    <div class="app-points">
+                        <a href="{{ app.link }}" target="_blank">{{ app.points }} POINTS</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

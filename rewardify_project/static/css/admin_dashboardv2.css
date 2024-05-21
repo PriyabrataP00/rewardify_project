@@ -1,0 +1,137 @@
+@import url('common.css');
+
+.add-apps-section {
+    background-color: #fff;
+    padding: 5%; /* Use percentage padding */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 80vw; /* Use viewport width */
+    max-width: 1000px; /* Cap the maximum width */
+    height: 60vh; /* Use viewport height */
+    margin: auto; /* Center horizontally */
+}
+
+.image-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5%; /* Use percentage margin */
+    padding: 1em; /* Add padding */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.image-upload.dragging {
+    background-color: #f0f0f0; /* Highlight background on drag */
+}
+
+.image-upload label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px; /* Adjusted width */
+    height: 150px; /* Adjusted height */
+    border-radius: 10px; /* Adjusted border-radius */
+    cursor: pointer;
+    overflow: hidden; /* Ensure no overflow */
+    position: relative;
+}
+
+.image-upload label img {
+    width: 100%; /* Adjusted width */
+    height: 100%; /* Adjusted height */
+    object-fit: cover; /* Ensure the image covers the container */
+    border-radius: 10px; /* Adjusted border-radius */
+}
+
+.image-upload input {
+    display: none;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%; /* Use percentage margin */
+    width: 100%; /* Ensure row takes full width */
+}
+
+.form-field {
+    flex: 1;
+    margin: 0 2%; /* Use percentage margin */
+    width: 100%; /* Full width */
+    max-width: 100%; /* Ensure fields take full width within their parent */
+}
+
+input, select {
+    width: 100%;
+    padding: 0.5em; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+input::placeholder, select::placeholder {
+    color: #888;
+}
+
+/* Points Container */
+.points-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Add Points Button */
+.add-points-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #1abc9c; /* Adjusted color */
+    color: #fff;
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: none;
+    border-radius: 5px; /* Adjusted border-radius */
+    cursor: pointer;
+    width: 200px; /* Adjusted width */
+    font-weight: bold; /* Adjusted font weight */
+    margin-top: 1em; /* Adjusted margin */
+}
+
+.add-points-button:hover {
+    background-color: #16a085; /* Adjusted hover color */
+}
+
+/* Points Input */
+#pointsInput {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 200px; /* Same width as button */
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: 1px solid #1abc9c; /* Match button color */
+    border-radius: 5px; /* Match button border-radius */
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+
+/* Submit Button */
+.submit-button {
+    position: relative;
+    top:0;
+    left:0;
+    background-color: #e67e22; /* Adjusted color */
+    color: #fff;
+    padding: 0.5em 1em; /* Adjusted padding */
+    border: none;
+    border-radius: 5px; /* Adjusted border-radius */
+    cursor: pointer;
+    width: 200px; /* Adjusted width */
+    font-weight: bold; /* Adjusted font weight */
+    margin-top: 1em; /* Adjusted margin */
+}
+
+.submit-button:hover {
+    background-color: #d35400; /* Adjusted hover color */
+}

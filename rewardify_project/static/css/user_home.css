@@ -1,0 +1,72 @@
+/* user_home.css */
+@import url('common.css');
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+
+
+.app-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.app-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #bdc3c7;
+    background-color:#d1ecf1 ;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.app-icon {
+    height: 80px;
+    width: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: none;
+}
+
+.app-details {
+    flex-grow: 1;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.app-details h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.app-details a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.app-details a:hover {
+    text-decoration: underline;
+}
+
+.app-points p{
+    background-color: #1abc9c;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    min-width: 120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

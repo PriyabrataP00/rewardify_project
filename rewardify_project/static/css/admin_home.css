@@ -1,0 +1,99 @@
+@import url('common.css');
+
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 25px; /* Round edges */
+    max-width: 500px; /* Maximum width */
+}
+
+.app-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.app-list ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.app-list li {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.app-item {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.app-icon {
+    flex: 0 0 100px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.app-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.app-details {
+    flex-grow: 1;
+}
+
+.app-details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.app-details p {
+    margin: 5px 0;
+}
+
+.app-details a {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.app-details a:hover {
+    background-color: #2980b9;
+}
+
+.app-points {
+    background-color: #1abc9c;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    height:50%;
+    min-width: 120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

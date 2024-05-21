@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Tasks{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="content">
+            <h2>App List</h2>
+            <ul class="app-list">
+                {% for app in apps %}
+                <li class="app-item">
+                    <img src="{{ app.app_image.url }}" alt="{{ app.app_name }}" class="app-icon">
+                    <div class="app-details">
+                        <h3>{{ app.app_name }}</h3>
+                        <p>{{ app.description }}</p>
+                        <a href="{% url 'installed_app_detail' app.id %}">View in detail</a>
+                    </div>
+                    <div class="app-points">
+                        <p>{{ app.points }} POINTS</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
