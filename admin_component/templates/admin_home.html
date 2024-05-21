@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>App List</h1>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'admin_home' %}" class="home-button"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'admin_dashboard' %}" class="add-apps-button"><i class="fas fa-plus"></i> Add Apps</a>
+            <a href="{% url 'settings' %}" class="settings-button"><i class="fas fa-cog"></i> Settings</a>
+            <a href="{% url 'create_admin_user' %}" class="create-admin-user-button"><i class="fas fa-user-plus"></i>Create Admin User</a>
+        </div>
+        <div class="content">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." id="searchInput">
+            </div>
+            <div class="app-list">
+                <ul>
+                    {% for item in app_data %}
+                    <li>
+                        <div class="app-item">
+                            <div class="app-icon">
+                                {% if item.image %}
+                                <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                                {% else %}
+                                <img src="{% static 'images/default_upload.png' %}" alt="Default Image">
+                                {% endif %}
+                            </div>
+                            <div class="app-details">
+                                <h3>{{ item.name }}</h3>
+                                <a href="{{ item.link }}" target="_blank" class="points-button">View in detail</a>
+                            </div>
+                            <div class="app-points">
+                                <p>{{ item.points }} POINTS</p>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const appItems = document.querySelectorAll('.app-item');
+            appItems.forEach(item => {
+                const appName = item.querySelector('h3').textContent.toLowerCase();
+                if (appName.includes(searchTerm)) {
+                    item.parentElement.style.display = 'block';
+                } else {
+                    item.parentElement.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

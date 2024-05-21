@@ -1,0 +1,169 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_dashboardv2.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Hello, {{ user.username }}</h1>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'admin_home' %}" class="home-button"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'admin_dashboard' %}" class="add-apps-button"><i class="fas fa-plus"></i> Add Apps</a>
+            <a href="{% url 'settings' %}" class="settings-button"><i class="fas fa-cog"></i> Settings</a>
+            <a href="{% url 'create_admin_user' %}" class="create-admin-user-button"><i class="fas fa-user-plus"></i>Create Admin User</a>
+        </div>
+        <div class="content">
+            {% if status_message %}
+            <div class="status-message" id="statusMessage">
+                <p>{{ status_message }}</p>
+            </div>
+            {% endif %}
+            {% if overwrite_warning %}
+            <div class="warning-message" id="overwriteWarning">
+                <p>An app with this name already exists. Do you want to overwrite it?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="existing_app_id" value="{{ existing_app_id }}">
+                    <button type="submit" name="confirm_overwrite" class="confirm-button">Yes, Overwrite</button>
+                </form>
+                <p>Or use a different name to create a duplicate.</p>
+            </div>
+            {% endif %}
+            <div id="addAppsSection" class="add-apps-section">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <!-- Image Upload Section -->
+                    <div class="form-group image-upload" id="imageUploadContainer">
+                        <input type="file" name="app_image" id="app_image" class="inputfile" onchange="previewImage(event)">
+                        <label for="app_image" id="uploadLabel">
+                            <img id="default_image" src="{% static 'images/default_upload.png' %}" alt="Upload Image">
+                        </label>
+                        {% if form.image.errors %}
+                        <div class="error">{{ form.image.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <!-- App Name and App Link Fields -->
+                    <div class="form-row">
+                        <div class="form-field short-field">
+                            {{ form.app_name }}
+                        </div>
+                        <div class="form-field short-field">
+                            {{ form.app_link }}
+                        </div>
+                    </div>
+                    <!-- App Category and Sub Category Fields -->
+                    <div class="form-row">
+                        <div class="form-field short-field">
+                            {{ form.app_category }}
+                        </div>
+                        <div class="form-field short-field">
+                            {{ form.sub_category }}
+                        </div>
+                    </div>
+                    <!-- Add Points Button and Points Input Field -->
+                    <div class="form-row">
+                        <div class="form-field">
+                            <div class="points-container">
+                                <button type="button" class="add-points-button" id="addPointsButton" onclick="editPoints()">Add Points</button>
+                                <input type="number" name="points" id="pointsInput" placeholder="Points" onblur="savePoints()">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="form-row submit-group">
+                        <button type="submit" class="submit-button" style="display: none;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitButton = document.querySelector('.submit-button');
+            const pointsInput = document.querySelector('#pointsInput');
+            const addPointsButton = document.getElementById('addPointsButton');
+            const imageUploadContainer = document.getElementById('imageUploadContainer');
+            const appImage = document.getElementById('app_image');
+            const defaultImage = document.getElementById('default_image');
+            const statusMessage = document.getElementById('statusMessage');
+
+            if (statusMessage) {
+                setTimeout(function() {
+                    statusMessage.classList.add('hidden');
+                }, 5000);
+            }
+            pointsInput.addEventListener('input', function() {
+        
+                if (pointsInput.value) {
+                    submitButton.style.display = 'block';
+                } else {
+                    submitButton.style.display = 'none';
+                }
+            });
+
+
+            imageUploadContainer.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                imageUploadContainer.classList.add('dragging');
+            });
+
+            imageUploadContainer.addEventListener('dragleave', () => {
+                imageUploadContainer.classList.remove('dragging');
+            });
+
+            imageUploadContainer.addEventListener('drop', (e) => {
+                e.preventDefault();
+                imageUploadContainer.classList.remove('dragging');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    appImage.files = files;
+                    previewImage({ target: appImage });
+                }
+            });
+        });
+
+        function editPoints() {
+            const addPointsButton = document.getElementById('addPointsButton');
+            const pointsInput = document.getElementById('pointsInput');
+            addPointsButton.style.display = 'none';
+            pointsInput.style.display = 'block';
+            pointsInput.focus();
+        }
+
+        function savePoints() {
+            const addPointsButton = document.getElementById('addPointsButton');
+            const pointsInput = document.getElementById('pointsInput');
+            if (pointsInput.value) {
+                addPointsButton.textContent = `${pointsInput.value} POINTS`;
+            } else {
+                addPointsButton.textContent = 'Add Points';
+            }
+            addPointsButton.style.display = 'block';
+            pointsInput.style.display = 'none';
+        }
+
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const dataURL = reader.result;
+                const output = document.getElementById('default_image');
+                output.src = dataURL;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Admin User</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/new_admin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Create Admin User</h1>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'admin_home' %}" class="home-button"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'admin_dashboard' %}" class="add-apps-button"><i class="fas fa-plus"></i> Add Apps</a>
+            <a href="{% url 'settings' %}" class="settings-button"><i class="fas fa-cog"></i> Settings</a>
+            <a href="{% url 'create_admin_user' %}" class="create-admin-user-button"><i class="fas fa-user-plus"></i>Create Admin User</a>
+        </div>
+        <div class="content">
+            <!-- Create New Admin User Form -->
+            <div class="form-section">
+                <h2>Create New Admin User</h2>
+                <form method="post" action="{% url 'create_admin_user' %}">
+                    {% csrf_token %}
+                    {{ admin_user_form.as_p }}
+                    <button type="submit" name="create_admin_user">Create Admin User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

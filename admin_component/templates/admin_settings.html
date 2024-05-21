@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin_settings.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Settings</h1>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'admin_home' %}" class="home-button"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'admin_dashboard' %}" class="add-apps-button"><i class="fas fa-plus"></i> Add Apps</a>
+            <a href="{% url 'settings' %}" class="settings-button"><i class="fas fa-cog"></i> Settings</a>
+            <a href="{% url 'create_admin_user' %}" class="create-admin-user-button"><i class="fas fa-user-plus"></i>Create Admin User</a>
+        </div>
+        <div class="content">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search categories and subcategories..." onkeyup="searchItems()">
+            </div>
+            <div class="columns-container">
+                <div class="column add-category-column">
+                    <h2>Add Category</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ category_form.as_p }}
+                        <button type="submit" name="category" class="add-category-button">Add Category</button>
+                    </form>
+                </div>
+                <div class="column add-subcategory-column">
+                    <h2>Add Sub Category</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ subcategory_form.as_p }}
+                        <button type="submit" name="subcategory" class="add-subcategory-button">Add Sub Category</button>
+                    </form>
+                </div>
+            </div>
+            <div class="columns-container">
+                <div class="column category-column">
+                    <h2>Categories</h2>
+                    <ul id="categoryList">
+                        {% for category in categories %}
+                        <li>
+                            <span class="category-name">{{ category.name }}</span>
+                            <div class="category-actions">
+                                <button onclick="editCategory({{ category.id }})"><i class="fas fa-edit"></i></button>
+                                <a href="{% url 'delete_category' category.id %}"><i class="fas fa-trash"></i></a>
+                            </div>
+                            <form id="editCategoryForm{{ category.id }}" method="post" class="edit-category-form" style="display: none;">
+                                {% csrf_token %}
+                                <input type="hidden" name="category_id" value="{{ category.id }}">
+                                <input type="text" name="name" value="{{ category.name }}">
+                                <button type="submit" name="edit_category">Save</button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="column subcategory-column">
+                    <h2>Sub Categories</h2>
+                    <ul id="subcategoryList">
+                        {% for subcategory in subcategories %}
+                        <li>
+                            <span class="subcategory-name">{{ subcategory.name }}</span>
+                            <div class="subcategory-actions">
+                                <button onclick="editSubcategory({{ subcategory.id }})"><i class="fas fa-edit"></i></button>
+                                <a href="{% url 'delete_subcategory' subcategory.id %}"><i class="fas fa-trash"></i></a>
+                            </div>
+                            <form id="editSubcategoryForm{{ subcategory.id }}" method="post" class="edit-subcategory-form" style="display: none;">
+                                {% csrf_token %}
+                                <input type="hidden" name="subcategory_id" value="{{ subcategory.id }}">
+                                <input type="text" name="name" value="{{ subcategory.name }}">
+                                <button type="submit" name="edit_subcategory">Save</button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchItems() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const categories = document.querySelectorAll('#categoryList li');
+            const subcategories = document.querySelectorAll('#subcategoryList li');
+
+            categories.forEach(category => {
+                if (category.textContent.toLowerCase().includes(input)) {
+                    category.style.display = '';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+
+            subcategories.forEach(subcategory => {
+                if (subcategory.textContent.toLowerCase().includes(input)) {
+                    subcategory.style.display = '';
+                } else {
+                    subcategory.style.display = 'none';
+                }
+            });
+        }
+
+        function editCategory(id) {
+            const form = document.getElementById(`editCategoryForm${id}`);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function editSubcategory(id) {
+            const form = document.getElementById(`editSubcategoryForm${id}`);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
