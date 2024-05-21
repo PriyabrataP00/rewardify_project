@@ -18,5 +18,5 @@ services:
         sync: false
     region: singapore
     buildCommand: ./build.sh
-    startCommand: python -m gunicorn rewrdify_project.asgi:application -k uvicorn.workers.UvicornWorker
+    startCommand: python -m gunicorn rewardify_project.asgi:application -k uvicorn.workers.UvicornWorker
 version: "1"
